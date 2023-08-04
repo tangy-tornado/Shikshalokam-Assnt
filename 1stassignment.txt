@@ -1,0 +1,32 @@
+def print_shortest_substrings(s, x):
+    arr = list(s)
+    res = list();
+    l = len(arr)
+    # c = 0
+    for i in range(0, l):
+        c = 1
+        word = "" + arr[i]
+        for j in range(i+1, l):
+            c+=1
+            word = word+arr[j]
+            # print(res)
+            if arr[i] == arr[j]:
+                if c>=x:
+                    if len(res)==0 or len(word)==len(res[0]):
+                        res.append(word)
+                    elif len(word) < len(res[0]):
+                        res.clear()
+                        res.append(word)
+                else:
+                    break
+    print()
+    if len(res) == 0: 
+        print("not-found")
+    else:
+        for i in res:
+            print(i, end=" ")
+       
+s = input("Enter String: ")
+x = int(input("Enter x value:"))
+
+print_shortest_substrings(s, x)
